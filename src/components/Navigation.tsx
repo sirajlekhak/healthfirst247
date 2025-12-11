@@ -1,6 +1,6 @@
 import { Menu, X, Phone, Mail, MessageCircle, User, Home, Stethoscope, FileText, Mailbox } from 'lucide-react';
 import { useState, useEffect } from 'react';
-
+import logo from '../assets/logo.png';
 interface NavigationProps {
   currentPage: string;
   onNavigate: (page: string) => void;
@@ -101,7 +101,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
               <div className="flex items-center">
                 <div className="flex items-center justify-center mr-3">
                   <img 
-                    src="/logo.png" 
+                    src={logo} 
                     alt="HealthFirst247 Logo" 
                     className="w-12 h-12 object-contain"
                     onError={(e) => {

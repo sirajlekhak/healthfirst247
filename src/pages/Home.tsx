@@ -1,6 +1,6 @@
 import { Award, Heart, Users, Clock, CheckCircle, Shield, Star, ArrowRight, Phone, Target, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
-
+import doctorprofilepic from '../assets/doctorprofilepic.jpg';
 interface HomeProps {
   onNavigate: (page: string) => void;
 }
@@ -140,7 +140,7 @@ export default function Home({ onNavigate }: HomeProps) {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-transparent to-transparent z-10" />
                 <img
-                  src="./doctorprofilepic.jpg"
+                  src={doctorprofilepic}
                   alt="Dr. Shailendra - Composite Medical Consultant"
                   className="w-full h-[450px] md:h-[500px] lg:h-[550px] object-cover"
                 />

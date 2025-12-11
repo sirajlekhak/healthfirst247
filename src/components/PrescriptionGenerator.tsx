@@ -9,8 +9,8 @@ import {
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import './App.css';
-import logo from './logo.png';
-import signatureImg from './signature.png';
+import logo from '../assets/logo.png';
+import signatureImg from '../assets/signature.png';
 
 // Types
 interface Medicine {
@@ -643,7 +643,7 @@ doc.setTextColor(0, 0, 0); // Black color for degree
       doc.text(line, pageWidth - margin - 40, signatureDegreeY + (index * 4), { align: 'center' });
     });
     
-    doc.text(`${data.doctor.registrationNo}`, pageWidth - margin - 40, signatureDegreeY + (signatureDegreeLines.length * 4) + 4, { align: 'center' });
+    
 
     // Emergency contact in footer
     doc.setFontSize(7);
@@ -713,7 +713,7 @@ doc.setTextColor(0, 0, 0); // Black color for degree
       <td align="right">
         <h3 style="margin: 0; color: #0f172a; font-size: 16px;">${data.doctor.name}</h3>
         <p style="margin: 5px 0; color: #475569; font-size: 12px; line-height: 1.3;">${data.doctor.degree}</p>
-        <p style="margin: 5px 0; color: #475569; font-size: 12px;">${data.doctor.registrationNo}</p>
+        
       </td>
     </tr>
   </table>
@@ -793,7 +793,7 @@ doc.setTextColor(0, 0, 0); // Black color for degree
             }
             <p><strong>${data.doctor.name}</strong></p>
             <p style="font-size: 12px; line-height: 1.3;">${data.doctor.degree}</p>
-            <p style="font-size: 12px;">${data.doctor.registrationNo}</p>
+            
           </div>
 
           <div class="footer">
@@ -830,11 +830,6 @@ doc.setTextColor(0, 0, 0); // Black color for degree
     }
   };
 
-  // Copy prescription ID
-  const copyPrescriptionId = () => {
-    navigator.clipboard.writeText(data.prescriptionId);
-    setNotification({ type: 'success', message: 'Prescription ID copied to clipboard!' });
-  };
 
   // Close notification
   useEffect(() => {
@@ -849,7 +844,7 @@ doc.setTextColor(0, 0, 0); // Black color for degree
   // Login Form
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 p-4 mt-12">
         <div className="w-full max-w-md relative z-10">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
             <div className="bg-gradient-to-r from-blue-700 to-blue-900 p-8 text-center text-white">
@@ -1114,27 +1109,7 @@ doc.setTextColor(0, 0, 0); // Black color for degree
 
           {/* Right Column - Preview & Actions */}
           <div className="space-y-6">
-            {/* Prescription ID */}
-            <Card>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-800">Prescription ID</h3>
-                <button
-                  onClick={copyPrescriptionId}
-                  className="text-blue-600 hover:text-blue-800 flex items-center text-sm"
-                >
-                  <Copy size={16} className="mr-1" />
-                  Copy
-                </button>
-              </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <code className="font-mono text-lg font-bold text-blue-700">
-                  {data.prescriptionId}
-                </code>
-                <p className="text-sm text-gray-600 mt-2">
-                  This ID will be printed on the prescription
-                </p>
-              </div>
-            </Card>
+          
 
             {/* Quick Preview */}
             <Card title="Quick Preview" icon={Eye}>
@@ -1303,18 +1278,6 @@ doc.setTextColor(0, 0, 0); // Black color for degree
                 </tr>
               </tbody>
             </table>
-          </div>
-
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-bold text-blue-800 mb-2">MEDICAL PRESCRIPTION</h2>
-            <p className="text-gray-600">
-              Prescription ID: {data.prescriptionId} | Date:{' '}
-              {new Date(data.patient.date).toLocaleDateString('en-IN', {
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric'
-              })}
-            </p>
           </div>
 
           <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-6">

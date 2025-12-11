@@ -1,5 +1,5 @@
 import { Stethoscope, Heart, Activity, Users, FileText, Thermometer, Clipboard, Shield } from 'lucide-react';
-
+import stethoscope from '../assets/stethoscope.jpg';
 interface ServicesProps {
   onNavigate: (page: string) => void;
 }
@@ -181,7 +181,8 @@ export default function Services({ onNavigate }: ServicesProps) {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
-src="./stethoscope.jpg"                  alt="Medical consultation"
+                  src={stethoscope}                 
+                  alt="Medical consultation"
                   className="w-full h-[500px] object-cover"
                 />
               </div>
